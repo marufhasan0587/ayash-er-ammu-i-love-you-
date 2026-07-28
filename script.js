@@ -1,30 +1,27 @@
-function openLetter() {
-    const card = document.querySelector(".card");
-    const letter = document.getElementById("letter");
+const text = "Every heartbeat whispers your name ❤️";
+let i = 0;
 
-    card.style.display = "none";
-    letter.style.display = "block";
-
-    document.body.style.overflow = "hidden";
-
-    createHearts();
+function typingEffect() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typingEffect, 70);
+    }
 }
 
-function createHearts() {
-    for (let i = 0; i < 40; i++) {
-        let heart = document.createElement("div");
+window.onload = function () {
+    typingEffect();
+};
 
-        heart.innerHTML = "❤️";
-        heart.className = "heart";
+function openLetter() {
+    const letter = document.getElementById("letter");
 
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (3 + Math.random() * 4) + "s";
-        heart.style.fontSize = (20 + Math.random() * 30) + "px";
-
-        document.body.appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        }, 7000);
+    if (letter.style.display === "block") {
+        letter.style.display = "none";
+    } else {
+        letter.style.display = "block";
+        letter.scrollIntoView({
+            behavior: "smooth"
+        });
     }
 }
