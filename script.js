@@ -1,32 +1,30 @@
-const button = document.getElementById("openBtn");
-const letter = document.getElementById("letter");
-
-button.addEventListener("click", () => {
-    if (letter.classList.contains("show")) {
-        letter.classList.remove("show");
-        button.innerHTML = "💌 Open My Heart";
-    } else {
-        letter.classList.add("show");
-        button.innerHTML = "❤️ Close Letter";
-    }
-});
-
-// Floating Hearts
-setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (20 + Math.random() * 30) + "px";
-    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 7000);
-}, 300);
 function openLetter() {
-    alert("I Love You ❤️");
+    const card = document.querySelector(".card");
+    const letter = document.getElementById("letter");
+
+    card.style.display = "none";
+    letter.style.display = "block";
+
+    document.body.style.overflow = "hidden";
+
+    createHearts();
+}
+
+function createHearts() {
+    for (let i = 0; i < 40; i++) {
+        let heart = document.createElement("div");
+
+        heart.innerHTML = "❤️";
+        heart.className = "heart";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+        heart.style.fontSize = (20 + Math.random() * 30) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
 }
