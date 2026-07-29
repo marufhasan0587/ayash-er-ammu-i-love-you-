@@ -2,14 +2,18 @@ const text = "Every heartbeat whispers your name ❤️";
 let i = 0;
 
 function typingEffect() {
+    const typing = document.getElementById("typing");
+
+    if (!typing) return;
+
     if (i < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(i);
+        typing.innerHTML += text.charAt(i);
         i++;
-        setTimeout(typingEffect, 70);
+        setTimeout(typingEffect, 60);
     }
 }
 
-window.onload = function () {
+window.onload = () => {
     typingEffect();
 };
 
@@ -18,10 +22,15 @@ function openLetter() {
 
     if (letter.style.display === "block") {
         letter.style.display = "none";
-    } else {
-        letter.style.display = "block";
-        letter.scrollIntoView({
-            behavior: "smooth"
-        });
+        return;
     }
+
+    letter.style.display = "block";
+
+    setTimeout(() => {
+        letter.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }, 150);
 }
