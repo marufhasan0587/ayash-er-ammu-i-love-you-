@@ -1,38 +1,39 @@
-const text = "Every heartbeat whispers your name. Every prayer carries your happiness. ❤️";
+const message =
+"Every heartbeat whispers your name. Every prayer carries your happiness. ❤️";
 
 let i = 0;
 
-function typingEffect(){
+function typeWriter(){
 
-    if(i < text.length){
+    if(i < message.length){
 
-        document.getElementById("typing").innerHTML += text.charAt(i);
+        document.getElementById("typing").innerHTML += message.charAt(i);
 
         i++;
 
-        setTimeout(typingEffect,50);
+        setTimeout(typeWriter,40);
 
     }
 
 }
 
-window.onload=function(){
+window.onload = function(){
 
-    typingEffect();
+    typeWriter();
 
 }
 
 function openLetter(){
 
-    const letter=document.getElementById("letter");
+    const letter = document.getElementById("letter");
 
-    if(letter.style.display==="block"){
+    if(letter.style.display === "block"){
 
-        letter.style.display="none";
+        letter.style.display = "none";
 
     }else{
 
-        letter.style.display="block";
+        letter.style.display = "block";
 
         letter.scrollIntoView({
 
