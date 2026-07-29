@@ -1,36 +1,45 @@
-const text = "Every heartbeat whispers your name ❤️";
+const text = "Every heartbeat whispers your name. Every prayer carries your happiness. ❤️";
+
 let i = 0;
 
-function typingEffect() {
-    const typing = document.getElementById("typing");
+function typingEffect(){
 
-    if (!typing) return;
+    if(i < text.length){
 
-    if (i < text.length) {
-        typing.innerHTML += text.charAt(i);
+        document.getElementById("typing").innerHTML += text.charAt(i);
+
         i++;
-        setTimeout(typingEffect, 60);
+
+        setTimeout(typingEffect,50);
+
     }
+
 }
 
-window.onload = () => {
+window.onload=function(){
+
     typingEffect();
-};
 
-function openLetter() {
-    const letter = document.getElementById("letter");
+}
 
-    if (letter.style.display === "block") {
-        letter.style.display = "none";
-        return;
+function openLetter(){
+
+    const letter=document.getElementById("letter");
+
+    if(letter.style.display==="block"){
+
+        letter.style.display="none";
+
+    }else{
+
+        letter.style.display="block";
+
+        letter.scrollIntoView({
+
+            behavior:"smooth"
+
+        });
+
     }
 
-    letter.style.display = "block";
-
-    setTimeout(() => {
-        letter.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    }, 150);
 }
